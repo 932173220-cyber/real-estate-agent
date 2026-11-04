@@ -1,0 +1,40 @@
+# Local configuration and credentials
+.env*
+!.env.example
+*.pem
+*.key
+
+# Customer data, imported documents, indexes and runtime output
+data/
+*.db
+*.db-*
+*.sqlite
+*.sqlite3
+*.sqlite-*
+*.sqlite3-*
+*.log
+logs/
+checks.json
+eval_results/
+*.eval
+房产助手位置.json
+
+# Downloaded dependencies, model weights and build output
+.venv/
+venv/
+build/
+dist/
+models/
+*.spec
+__pycache__/
+*.py[cod]
+_deps/
+_scratch/
+.pytest_cache/
+.ruff_cache/
+.coverage
+htmlcov/
+.idea/
+.vscode/
+.DS_Store
+Thumbs.db

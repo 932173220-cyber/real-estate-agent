@@ -1,0 +1,22 @@
+{
+  "说明": "所有示例值均为占位，请替换为经过核实的房源信息，再将扩展名改为.json导入。总价单位元、距离单位米。",
+  "properties": [
+    {
+      "property_id": "R001",
+      "community_key": "replace-with-community-key",
+      "community_name": "请填写真实小区名称",
+      "region": "请填写区域",
+      "price_yuan": 3500000,
+      "area_sqm": 105.0,
+      "bedrooms": 3,
+      "floor": 8,
+      "total_floors": 18,
+      "orientation": "南",
+      "decoration": "请填写实际装修情况",
+      "building_age": 8,
+      "has_elevator": true,
+      "metro_distance_m": null,
+      "intro": "请填写简短房源介绍"
+    }
+  ]
+}

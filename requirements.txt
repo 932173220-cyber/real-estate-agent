@@ -1,0 +1,21 @@
+openai==3.35.1
+pydantic==2.14.1
+python-dotenv==1.2.4
+numpy==2.5.4
+scipy==1.18.1
+pypdf==6.21.2
+langgraph==1.2.18
+langgraph-checkpoint==4.3.1
+langgraph-checkpoint-sqlite==3.1.2
+langchain-core==1.7.1
+aiosqlite==0.22.1
+jsonschema==4.26.0
+# RAG: BGE embeddings + Chroma vector index + Chinese BM25
+sentence-transformers==6.2.0
+transformers==5.22.1
+chromadb==1.5.9
+jieba==0.42.1
+# Session/profile/summary cache
+redis==8.1.0
+# Benchmark harness (8 families x 100 samples)
+inspect-ai==0.3.286
