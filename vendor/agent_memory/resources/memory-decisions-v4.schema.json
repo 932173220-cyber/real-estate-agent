@@ -1,0 +1,103 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "type": "object",
+  "additionalProperties": false,
+  "required": [
+    "decisions",
+    "retention_decisions"
+  ],
+  "properties": {
+    "decisions": {
+      "type": "array",
+      "maxItems": 8,
+      "items": {
+        "type": "object",
+        "additionalProperties": false,
+        "required": [
+          "candidate_index",
+          "action",
+          "target_memory_id",
+          "reason"
+        ],
+        "properties": {
+          "candidate_index": {
+            "type": "integer",
+            "minimum": 0,
+            "maximum": 7
+          },
+          "action": {
+            "type": "string",
+            "enum": [
+              "ADD",
+              "NOOP",
+              "UPDATE",
+              "PENDING",
+              "UPDATE_RETENTION"
+            ]
+          },
+          "target_memory_id": {
+            "anyOf": [
+              {
+                "type": "string",
+                "minLength": 1
+              },
+              {
+                "type": "null"
+              }
+            ]
+          },
+          "reason": {
+            "type": "string",
+            "minLength": 1,
+            "maxLength": 1000
+          }
+        }
+      }
+    },
+    "retention_decisions": {
+      "type": "array",
+      "maxItems": 8,
+      "items": {
+        "type": "object",
+        "additionalProperties": false,
+        "required": [
+          "request_index",
+          "action",
+          "target_memory_id",
+          "reason"
+        ],
+        "properties": {
+          "request_index": {
+            "type": "integer",
+            "minimum": 0,
+            "maximum": 7
+          },
+          "action": {
+            "type": "string",
+            "enum": [
+              "UPDATE_RETENTION",
+              "NOOP",
+              "PENDING"
+            ]
+          },
+          "target_memory_id": {
+            "anyOf": [
+              {
+                "type": "string",
+                "minLength": 1
+              },
+              {
+                "type": "null"
+              }
+            ]
+          },
+          "reason": {
+            "type": "string",
+            "minLength": 1,
+            "maxLength": 1000
+          }
+        }
+      }
+    }
+  }
+}

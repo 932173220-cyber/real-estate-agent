@@ -1,0 +1,223 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "title": "长期记忆正式记录 v3",
+  "type": "object",
+  "properties": {
+    "id": {
+      "type": "string",
+      "minLength": 1,
+      "maxLength": 200,
+      "pattern": "\\S"
+    },
+    "memory_type": {
+      "type": "string",
+      "enum": [
+        "semantic",
+        "episodic"
+      ]
+    },
+    "subject": {
+      "type": "string",
+      "minLength": 1,
+      "maxLength": 200,
+      "pattern": "\\S"
+    },
+    "attribute": {
+      "type": "string",
+      "minLength": 1,
+      "maxLength": 200,
+      "pattern": "\\S"
+    },
+    "value": {
+      "type": "string",
+      "minLength": 1,
+      "maxLength": 1000,
+      "pattern": "\\S"
+    },
+    "content": {
+      "type": "string",
+      "minLength": 1,
+      "maxLength": 500,
+      "pattern": "\\S"
+    },
+    "scope": {
+      "type": "object",
+      "properties": {
+        "user_id": {
+          "anyOf": [
+            {
+              "type": "string",
+              "minLength": 1,
+              "maxLength": 200,
+              "pattern": "\\S"
+            },
+            {
+              "type": "null"
+            }
+          ]
+        },
+        "project_id": {
+          "anyOf": [
+            {
+              "type": "string",
+              "minLength": 1,
+              "maxLength": 200,
+              "pattern": "\\S"
+            },
+            {
+              "type": "null"
+            }
+          ]
+        },
+        "agent_id": {
+          "type": "string",
+          "minLength": 1,
+          "maxLength": 200,
+          "pattern": "\\S"
+        }
+      },
+      "required": [
+        "user_id",
+        "project_id",
+        "agent_id"
+      ],
+      "additionalProperties": false
+    },
+    "source": {
+      "type": "object",
+      "properties": {
+        "conversation_id": {
+          "type": "string",
+          "minLength": 1,
+          "maxLength": 200,
+          "pattern": "\\S"
+        },
+        "message_id": {
+          "type": "string",
+          "minLength": 1,
+          "maxLength": 200,
+          "pattern": "\\S"
+        },
+        "speaker": {
+          "const": "user"
+        },
+        "evidence": {
+          "type": "string",
+          "minLength": 1,
+          "maxLength": 1000,
+          "pattern": "\\S"
+        }
+      },
+      "required": [
+        "conversation_id",
+        "message_id",
+        "speaker",
+        "evidence"
+      ],
+      "additionalProperties": false
+    },
+    "time": {
+      "type": "object",
+      "properties": {
+        "event_time": {
+          "anyOf": [
+            {
+              "type": "string",
+              "format": "date",
+              "pattern": "^\\d{4}-\\d{2}-\\d{2}$"
+            },
+            {
+              "type": "string",
+              "format": "date-time",
+              "pattern": "^\\d{4}-\\d{2}-\\d{2}T\\d{2}:\\d{2}:\\d{2}(?:\\.\\d+)?(?:Z|[+-]\\d{2}:\\d{2})$"
+            },
+            {
+              "type": "null"
+            }
+          ]
+        },
+        "recorded_at": {
+          "type": "string",
+          "format": "date-time",
+          "pattern": "^\\d{4}-\\d{2}-\\d{2}T\\d{2}:\\d{2}:\\d{2}(?:\\.\\d+)?(?:Z|[+-]\\d{2}:\\d{2})$"
+        },
+        "valid_from": {
+          "anyOf": [
+            {
+              "type": "string",
+              "format": "date",
+              "pattern": "^\\d{4}-\\d{2}-\\d{2}$"
+            },
+            {
+              "type": "string",
+              "format": "date-time",
+              "pattern": "^\\d{4}-\\d{2}-\\d{2}T\\d{2}:\\d{2}:\\d{2}(?:\\.\\d+)?(?:Z|[+-]\\d{2}:\\d{2})$"
+            },
+            {
+              "type": "null"
+            }
+          ]
+        },
+        "valid_to": {
+          "anyOf": [
+            {
+              "type": "string",
+              "format": "date",
+              "pattern": "^\\d{4}-\\d{2}-\\d{2}$"
+            },
+            {
+              "type": "string",
+              "format": "date-time",
+              "pattern": "^\\d{4}-\\d{2}-\\d{2}T\\d{2}:\\d{2}:\\d{2}(?:\\.\\d+)?(?:Z|[+-]\\d{2}:\\d{2})$"
+            },
+            {
+              "type": "null"
+            }
+          ]
+        }
+      },
+      "required": [
+        "event_time",
+        "recorded_at",
+        "valid_from",
+        "valid_to"
+      ],
+      "additionalProperties": false
+    },
+    "status": {
+      "type": "string",
+      "enum": [
+        "active",
+        "superseded",
+        "retracted"
+      ]
+    },
+    "supersedes": {
+      "anyOf": [
+        {
+          "type": "string",
+          "minLength": 1,
+          "maxLength": 200,
+          "pattern": "\\S"
+        },
+        {
+          "type": "null"
+        }
+      ]
+    }
+  },
+  "required": [
+    "id",
+    "memory_type",
+    "subject",
+    "attribute",
+    "value",
+    "content",
+    "scope",
+    "source",
+    "time",
+    "status",
+    "supersedes"
+  ],
+  "additionalProperties": false
+}
